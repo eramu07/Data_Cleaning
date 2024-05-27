@@ -5,7 +5,7 @@ Tags: ["Python","Pandas"]
 
 ---
 
-Data cleaning involves removing errors and inconsistencies from a dataset. In data science or machine learning and data analysis , this means ensuring there are no missing values, typos, type mismatches, duplicate rows, **`None`** or **`NaN`** entries, **`empty`** values, unnecessary columns, and more. The Pandas library provides powerful tools for data cleaning, with various functions to address and correct these issues.
+Data cleaning involves removing errors and inconsistencies from a dataset. In data science or machine learning and data analysis, this means ensuring there are no missing values, typos, type mismatches, duplicate rows, **`None`** or **`NaN`** entries, **`empty`** values, unnecessary columns, and more. The Pandas library provides powerful tools for data cleaning, with various functions to address and correct these issues.
 In the example below, we'll demonstrate how to clean a mock customer dataset step by step using the **Pandas** library.
 
 
@@ -42,7 +42,7 @@ data = pd.DataFrame({
 print(data)
 
 ```
-> The user's data set will display in this way
+> The user's data set will be displayed in this way
 ```bash
    user_id      Name  Last_name  age         Phone               Email      Not_Useful_column  
 0      101     Alice     Taylor   30   123/456/7890     alice@example.com          None  
@@ -61,7 +61,7 @@ print(data)
 
 Here we use the pandas `DataFrame()` function to create a mock dataset, this dataset contains 7 columns and 11 rows, the columns are, a `user_id` which is the user's unique id, a `Name` column, a `Last_name` column, the user's `age`, the user's `Phone` number, the user's `Email`, and finally a non-useful column called `Not_Useful_column` which we will use as an example of how to delete an unnecessary column from a dataset.
 
-As you can see in the example dataset, the data has some inconsistencies in the columns, a few unnecessary symbols in the `Name` column, and each of the values in the `Phone` column have different syntax which makes it difficult to work with them.
+As you can see in the example dataset, the data has some inconsistencies in the columns, a few unnecessary symbols in the `Name` column, and each of the values in the `Phone` column has a different syntax which makes it difficult to work with them.
 
 ### 1. Delete duplicated rows
 
@@ -132,11 +132,11 @@ data["Name"] = data["Name"].str.strip("[-_./0-9]{1}")
 
 ```
 
-The `strip()` method removes empty values at the beginning and at the end of a string, if we pass a specific value as a parameter it will look for that value at the beginning or at the end and remove it. In this example, we call the `strip()` method in the `Name` column `data["Name"].str.strip()` and pass it as parameters the values that we want to remove in a string `[-_./0-9]{1}`, then we access the dataset of the `Name` column `data["Name"]` and we assign it the new values.
+The `strip()` method removes empty values at the beginning and at the end of a string, if we pass a specific value as a parameter it will look for that value at the beginning or the end and remove it. In this example, we call the `strip()` method in the `Name` column `data["Name"].str.strip()` and pass it as parameters the values that we want to remove in a string `[-_./0-9]{1}`, then we access the dataset of the `Name` column `data["Name"]` and we assign it the new values.
 
 ### 4. Set a unique pattern for a column
 
-After cleaning the `Name` column , we have to set a single pattern for the `Phone` column, as shown in the example dataset there are different patterns in the values of this column and we have to set a single one for all of them. To do this use the code: 
+After cleaning the `Name` column, we have to set a single pattern for the `Phone` column, as shown in the example dataset there are different patterns in the values of this column and we have to set a single one for all of them. To do this use the code: 
 
 ```py
 data["Phone"] = data["Phone"].str.replace(r"[^0-9]", '', regex=True)
@@ -165,7 +165,7 @@ Here we want to establish the pattern `000-000-0000` on all the values in the `P
 
 Now that we have cleaned all the rows in the dataset, we have to delete the rows that contain `None` values and redefine the index of the rows in the dataset.
 
-```py
+``` py
 # Delete columns with None values
 data= data.dropna()
 
@@ -185,10 +185,10 @@ data = data.reset_index(drop=True)
 
 ```
 
-The **`dropna`** function deletes all the rows of a column containing `None` values and the **`reset_index`** function with the `drop=True` parameter reset the index of the rows and delete the old ones.
+The **`dropna`** function deletes all the rows of a column containing `None` values and the **`reset_index`** function with the `drop=True` parameter resets the index of the rows and deletes the old ones.
 
 Now we have a perfectly clean and consistent dataset to start working with. This was a simple example of how to clean the data of a dataset.
 
 ## Conclusion
 
-Data cleaning is a very important step before starting to work with a dataset in **data science** or **machine learning**,and **data analysis** it ensures that the data has no syntax errors, `None` or `NaN` values, duplicated rows, unnecessary columns, and many more things. A dataset can be clean in many ways not just the ones seen in this article, Pandas offers a wide variety of functions that helps us with this process. 
+Data cleaning is a very important step before starting to work with a dataset in **data science** or **machine learning**, and **data analysis** it ensures that the data has no syntax errors, `None` or `NaN` values, duplicated rows, unnecessary columns, and many more things. A dataset can be clean in many ways not just the ones seen in this article, Pandas offers a wide variety of functions that help us with this process. 
